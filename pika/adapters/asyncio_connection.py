@@ -457,7 +457,7 @@ class AsyncioProtocolConnection(base_connection.BaseConnection, asyncio.Protocol
             # anyway, it is closed, and we should report it to caller,
             # because future.result() does not raise after future.set_exception(None)
             if reason is None:
-                reason = ConnectionClosed()
+                reason = ConnectionClosed('Connection was closed')
             d.set_exception(reason)
         else:
             # Let client to handle disconnect
